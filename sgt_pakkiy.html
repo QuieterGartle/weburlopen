@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パッキー軍曹の魅力</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --color-primary: #2E578C;
+      --color-dark: #1A1A25; /* より黒髪のような暗色に調整 */
+      --color-accent: #A23E48; /* よりワインレッドに近い色に調整 */
+      --color-secondary: #4A1B24; /* ワインレッドの暗めの色調 */
+      --color-light: #F2F2F2;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--color-light);
+      font-family: 'Zen Kurenaido', sans-serif;
+      color: var(--color-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80' opacity='0.05'%3E%3Cpath fill='%23A23E48' d='M30 10C30 15.5 25.5 20 20 20S10 15.5 10 10 14.5 0 20 0s10 4.5 10 10zm30 0c0 5.5-4.5 10-10 10s-10-4.5-10-10S44.5 0 50 0s10 4.5 10 10zM30 40c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10zm30 0c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10zM30 70c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10zm30 0c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10z'%3E%3C/path%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--color-accent);
+      position: relative;
+    }
+    
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--color-dark);
+    }
+    
+    .header-title {
+      display: flex;
+      align-items: center;
+    }
+    
+    .title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--color-dark), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin-right: 10px;
+    }
+    
+    .header-icon {
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      margin: 0 15px;
+    }
+    
+    .header-date {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--color-dark);
+      text-align: right;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .profile-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--color-accent);
+    }
+    
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 100px;
+      height: 100px;
+      background-color: var(--color-accent);
+      opacity: 0.1;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-dark);
+      box-shadow: 0 0 0 3px var(--color-accent);
+      position: relative;
+    }
+    
+    .profile-info {
+      margin-left: 20px;
+    }
+    
+    .profile-name {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--color-dark);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .profile-name i {
+      margin-left: 10px;
+      color: var(--color-accent);
+    }
+    
+    .profile-username {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    
+    .profile-bio {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--color-secondary);
+      line-height: 1.5;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      border-left: 4px solid var(--color-accent);
+    }
+    
+    .section-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-accent);
+      opacity: 0.1;
+      border-radius: 0 0 0 60px;
+    }
+    
+    .section-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.8rem;
+      color: var(--color-accent);
+      opacity: 0.8;
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--color-dark);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px dashed var(--color-accent);
+      padding-bottom: 8px;
+    }
+    
+    .section-title i {
+      margin-right: 10px;
+      color: var(--color-accent);
+    }
+    
+    .item {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-accent);
+      border-radius: 50%;
+    }
+    
+    .item-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--color-dark);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .item-title i {
+      margin-left: 8px;
+      color: var(--color-accent);
+    }
+    
+    .item-content {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.4;
+    }
+    
+    .keyword {
+      font-weight: bold;
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .keyword::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: var(--color-accent);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    
+    .keyword i {
+      margin-left: 4px;
+      font-size: 0.9em;
+      color: var(--color-accent);
+    }
+    
+    .connection {
+      position: relative;
+      margin: 15px 0;
+      padding-left: 20px;
+      border-left: 2px dashed var(--color-accent);
+    }
+    
+    .connection::before {
+      content: "\f061";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      color: var(--color-accent);
+      padding: 2px;
+    }
+    
+    .highlight-box {
+      background-color: rgba(162, 62, 72, 0.1);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border: 1px solid var(--color-accent);
+      position: relative;
+    }
+    
+    .highlight-box::before {
+      content: "\f0eb";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background-color: white;
+      color: var(--color-accent);
+      padding: 0 8px;
+    }
+    
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--color-dark);
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+    
+    .note {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+      transform: rotate(1deg);
+      border: 1px solid #ddd;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .note::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--color-accent);
+      opacity: 0.2;
+      border-radius: 50%;
+    }
+    
+    .quote {
+      font-family: 'Kaisei Decol', serif;
+      font-style: italic;
+      color: var(--color-secondary);
+      border-left: 3px solid var(--color-accent);
+      padding-left: 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: "\f10d";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--color-accent);
+      opacity: 0.4;
+      position: absolute;
+      top: -5px;
+      left: -10px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      border-top: 2px dotted var(--color-accent);
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: var(--color-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-icons {
+      margin: 10px 0;
+    }
+    
+    .footer-icons i {
+      margin: 0 8px;
+      color: var(--color-accent);
+      font-size: 1.2rem;
+    }
+    
+    /* Animations */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      15% { transform: scale(1.2); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+      60% { transform: scale(1); }
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    
+    @keyframes coloring {
+      0% { color: var(--color-dark); }
+      50% { color: var(--color-accent); }
+      100% { color: var(--color-dark); }
+    }
+    
+    .fa-beat {
+      animation: heartbeat 1.5s infinite;
+    }
+    
+    .fa-bounce {
+      animation: floating 2s ease infinite;
+    }
+    
+    .fa-fade {
+      animation: coloring 3s infinite;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .header-date {
+        margin-top: 10px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <i class="fas fa-user-secret header-icon fa-bounce"></i>
+        <h1 class="title">パッキー軍曹の隠れた魅力</h1>
+        <i class="fas fa-award header-icon fa-beat"></i>
+      </div>
+      <div class="header-date">
+        <i class="far fa-calendar-alt"></i> 2025年3月10日
+      </div>
+    </header>
+    
+    <div class="main-content">
+      <div class="column">
+        <div class="profile-card">
+          <div class="profile-header">
+            <img src="https://pbs.twimg.com/profile_images/1871051794522279936/cHdolOmv_400x400.jpg" alt="パッキー軍曹のプロフィール画像" class="profile-image">
+            <div class="profile-info">
+              <h2 class="profile-name">パッキー軍曹 <i class="fas fa-medal fa-beat"></i></h2>
+              <div class="profile-username">@sgt_pakkiy</div>
+            </div>
+          </div>
+          <div class="profile-bio">
+            <p>
+              <i class="fas fa-quote-left fa-sm" style="color: var(--color-accent);"></i> 
+              映像クリエイターの端くれ ポートフォリオはfori.io/sgt-pakkiyからどうぞ アイコン：BISさん (@Bismuth833 ) ニセドさんの世話役：@nised_chesed
+              <i class="fas fa-quote-right fa-sm" style="color: var(--color-accent);"></i>
+            </p>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <i class="fas fa-video section-icon fa-fade"></i>
+          <h3 class="section-title"><i class="fas fa-pen-fancy fa-beat"></i> 映像表現の魅力</h3>
+          <div class="item">
+            <div class="item-title">視覚言語の選択 <i class="fas fa-lightbulb"></i></div>
+            <div class="item-content">
+              パッキー軍曹さんの<span class="keyword">映像センス<i class="fas fa-film"></i></span>は非常に洗練されており、的確な視覚表現を選ぶ能力に優れています。単なる映像にとどまらない、<span class="keyword">深い物語性<i class="fas fa-book-open"></i></span>が感じられる作品が特徴的です。
+            </div>
+          </div>
+          <div class="connection">
+            個性的な表現と論理的な構成の融合
+          </div>
+          <div class="item">
+            <div class="item-title">映像構成 <i class="fas fa-layer-group"></i></div>
+            <div class="item-content">
+              ストーリーの流れが明確に伝わる<span class="keyword">論理的な編集<i class="fas fa-cut"></i></span>と、視聴者を引き込む<span class="keyword">演出力<i class="fas fa-magic"></i></span>のバランスが絶妙です。
+            </div>
+          </div>
+          <div class="highlight-box">
+            <p>映像のフレーミングや編集の一つ一つに<span class="handwritten">こだわりと深さ</span>が感じられます</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section-card">
+          <i class="fas fa-brain section-icon fa-fade"></i>
+          <h3 class="section-title"><i class="fas fa-lightbulb fa-bounce"></i> クリエイティブ思考</h3>
+          <div class="item">
+            <div class="item-title">多角的視点 <i class="fas fa-street-view"></i></div>
+            <div class="item-content">
+              作品を<span class="keyword">多角的<i class="fas fa-cube"></i></span>に捉える思考が特徴的です。一般的な表現に流されず、<span class="keyword">独自の視点<i class="fas fa-binoculars"></i></span>から映像を構築する姿勢が見られます。
+            </div>
+          </div>
+          <div class="quote">
+            「複雑なテーマを本質的に捉える力は、パッキー軍曹さんの隠れた魅力の一つ」
+          </div>
+          <div class="item">
+            <div class="item-title">創造的好奇心 <i class="fas fa-search"></i></div>
+            <div class="item-content">
+              様々な映像表現に対する<span class="keyword">深い知識<i class="fas fa-graduation-cap"></i></span>と<span class="keyword">旺盛な創作意欲<i class="fas fa-atom"></i></span>が窺えます。常に新しい表現を探求し続ける姿勢が感じられます。
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <i class="fas fa-comments section-icon fa-flip"></i>
+          <h3 class="section-title"><i class="fas fa-comments fa-fade"></i> コミュニケーションスタイル</h3>
+          <div class="item">
+            <div class="item-title">対話の姿勢 <i class="fas fa-handshake"></i></div>
+            <div class="item-content">
+              <span class="keyword">誠実な姿勢<i class="fas fa-heart"></i></span>と<span class="keyword">他者を尊重する態度<i class="fas fa-user-check"></i></span>が特徴的です。相手の意見に真摯に向き合いながらも、自分の視点を明確に伝える対話力を持っています。
+            </div>
+          </div>
+          <div class="note">
+            フォロワーとの関わり方に、<span class="handwritten">温かさと誠実さ</span>が感じられます
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section-card">
+          <i class="fas fa-gem section-icon fa-fade"></i>
+          <h3 class="section-title"><i class="fas fa-crown fa-beat"></i> 隠れた魅力</h3>
+          <div class="item">
+            <div class="item-title">感性の豊かさ <i class="fas fa-palette"></i></div>
+            <div class="item-content">
+              作品の端々に表れる<span class="keyword">感性の豊かさ<i class="fas fa-feather-alt"></i></span>は、おそらく本人が自覚している以上のものがあります。映像表現や芸術的な感性が感じられる投稿からは、<span class="keyword">繊細な美意識<i class="fas fa-star"></i></span>が垣間見えます。
+            </div>
+          </div>
+          <div class="connection">
+            内面の豊かさが自然と表れる創作物
+          </div>
+          <div class="item">
+            <div class="item-title">人間への洞察 <i class="fas fa-user-check"></i></div>
+            <div class="item-content">
+              人間の複雑な心理や社会現象への<span class="keyword">鋭い洞察力<i class="fas fa-microscope"></i></span>が、作品や何気ない会話の中にも表れています。これは長年の経験と深い思索から培われたものと推察されます。
+            </div>
+          </div>
+          <div class="highlight-box">
+            <p><span class="handwritten">自分では気づいていない</span>独自の視点と表現力が、多くの人を惹きつける魅力になっています</p>
+          </div>
+        </div>
+        
+        <div class="section-card">
+          <i class="fas fa-heart section-icon fa-beat"></i>
+          <h3 class="section-title"><i class="fas fa-award fa-bounce"></i> 総合的な魅力</h3>
+          <div class="item">
+            <div class="item-content">
+              パッキー軍曹さんの最大の魅力は、<span class="keyword">技術力<i class="fas fa-tools"></i></span>と<span class="keyword">感性<i class="fas fa-heart"></i></span>のバランスが取れた創作スタイルにあります。映像制作の高い技術と温かい人間性が共存する稀有なクリエイターとして、フォロワーから高い信頼を得ているのでしょう。
+            </div>
+          </div>
+          <div class="quote">
+            「自分では気づいていない才能こそが、最も純粋で価値ある宝物かもしれません」
+          </div>
+          <div class="item">
+            <div class="item-title">世話役としての一面 <i class="fas fa-users"></i></div>
+            <div class="item-content">
+              「ニセドさんの世話役」という役割も、<span class="keyword">サポート力<i class="fas fa-hands-helping"></i></span>と<span class="keyword">人間関係構築力<i class="fas fa-link"></i></span>の高さを示しています。他者への思いやりが自然と行動に表れる人柄が魅力です。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>※このインフォグラフィックは推察に基づくものであり、実際のパッキー軍曹さんとは異なる場合があります</p>
+      <div class="footer-icons">
+        <i class="fas fa-film"></i>
+        <i class="fas fa-video"></i>
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p>作成日: 2025年3月10日</p>
+    </footer>
+  </div>
+</body>
+</html>
