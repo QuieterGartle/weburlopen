@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あのまろちゃんの魅力と素晴らしさ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Crimson+Text:ital@0;1&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --color-1: #2C1A1D; /* Dark burgundy */
+      --color-2: #4E3629; /* Dark brown */
+      --color-3: #AF6458; /* Terracotta */
+      --color-4: #703F37; /* Rust brown */
+      --color-5: #F2E8DC; /* Cream */
+      --color-6: #1A1A1A; /* Near black */
+      --gold-accent: #D4AF37; /* Gold */
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Crimson Text', 'Noto Serif JP', serif;
+      background-color: var(--color-6);
+      color: var(--color-5);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(45deg, var(--color-3) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--color-3) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--color-3) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--color-3) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--gold-accent);
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background-color: var(--color-3);
+    }
+    
+    .title-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .title {
+      font-family: 'Playfair Display', 'Noto Serif JP', serif;
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--gold-accent);
+      margin: 0 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .date {
+      font-family: 'Crimson Text', serif;
+      color: var(--color-5);
+      font-size: 16px;
+      text-align: right;
+      font-style: italic;
+    }
+    
+    .profile-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(78, 54, 41, 0.7);
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      border-left: 3px solid var(--gold-accent);
+    }
+    
+    .profile-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    }
+    
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid var(--gold-accent);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      margin-right: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .profile-info {
+      flex: 1;
+    }
+    
+    .profile-name {
+      font-family: 'Playfair Display', 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--gold-accent);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+    }
+    
+    .profile-name i {
+      margin-right: 0.5rem;
+      color: var(--color-3);
+    }
+    
+    .profile-id {
+      font-family: 'Crimson Text', serif;
+      color: var(--color-5);
+      font-size: 18px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      font-style: italic;
+    }
+    
+    .profile-id i {
+      margin-right: 0.5rem;
+      color: var(--color-3);
+    }
+    
+    .profile-description {
+      font-family: 'Crimson Text', 'Noto Serif JP', serif;
+      font-size: 16px;
+      color: var(--color-5);
+      line-height: 1.6;
+      position: relative;
+      padding-left: 1.5rem;
+      font-style: italic;
+    }
+    
+    .profile-description::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--color-3);
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background: var(--color-2);
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 2px solid var(--gold-accent);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    }
+    
+    .card-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: var(--gold-accent);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover .card-icon {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    
+    .card-title {
+      font-family: 'Playfair Display', 'Noto Serif JP', serif;
+      font-size: 20px;
+      color: var(--gold-accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+    }
+    
+    .card-title i {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      color: var(--color-3);
+    }
+    
+    .card-content {
+      font-family: 'Crimson Text', 'Noto Serif JP', serif;
+      font-size: 16px;
+      color: var(--color-5);
+    }
+    
+    .keyword {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(112, 63, 55, 0.7);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      margin: 0.2rem;
+      font-weight: normal;
+      color: var(--color-5);
+      transition: all 0.3s ease;
+      border-left: 2px solid var(--gold-accent);
+    }
+    
+    .keyword:hover {
+      background-color: rgba(175, 100, 88, 0.5);
+      transform: scale(1.05);
+    }
+    
+    .keyword i {
+      margin-right: 0.3rem;
+      font-size: 0.9rem;
+      color: var(--gold-accent);
+    }
+    
+    .highlight {
+      position: relative;
+      display: inline-block;
+      color: var(--gold-accent);
+      font-weight: bold;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-3);
+    }
+    
+    .connection {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      font-family: 'Crimson Text', serif;
+      color: var(--color-5);
+    }
+    
+    .connection-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-3);
+      position: relative;
+    }
+    
+    .connection-line::before, .connection-line::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--gold-accent);
+    }
+    
+    .connection-line::before {
+      left: 0;
+    }
+    
+    .connection-line::after {
+      right: 0;
+    }
+    
+    .connection-icon {
+      margin: 0 1rem;
+      font-size: 1rem;
+      color: var(--gold-accent);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-3);
+      font-family: 'Crimson Text', 'Noto Serif JP', serif;
+      color: var(--color-5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-style: italic;
+    }
+    
+    .footer-note {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-note i {
+      margin-right: 0.5rem;
+      color: var(--gold-accent);
+    }
+    
+    .animated-icon {
+      display: inline-block;
+    }
+    
+    .fa-beat {
+      animation: fa-beat 3s infinite;
+    }
+    
+    .fa-bounce {
+      animation: fa-bounce 3s infinite;
+    }
+    
+    .fa-fade {
+      animation: fa-fade 3s infinite;
+    }
+    
+    .fa-flip {
+      animation: fa-flip 3s infinite;
+    }
+    
+    .fa-shake {
+      animation: fa-shake 3s infinite;
+    }
+    
+    .fa-spin {
+      animation: fa-spin 3s infinite linear;
+    }
+    
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .appear {
+      animation: appear 1s forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .hand-drawn {
+      position: relative;
+    }
+    
+    .hand-drawn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-3);
+    }
+  </style>
+</head>
+<body>
+  <div class="background-pattern"></div>
+
+  <div class="container">
+    <header class="header">
+      <div class="title-container">
+        <i class="fa-solid fa-gem fa-2x" style="color: var(--gold-accent);"></i>
+        <h1 class="title">あのまろちゃんの魅力と素晴らしさ</h1>
+      </div>
+      <div class="date">
+        <i class="fa-solid fa-calendar-day"></i> 2025年3月10日
+      </div>
+    </header>
+
+    <section class="profile-section appear">
+      <div class="profile-image">
+        <img src="https://pbs.twimg.com/profile_images/1693940163121192960/xeIGEvZQ_400x400.jpg" alt="あのまろちゃんのプロフィール画像" />
+      </div>
+      <div class="profile-info">
+        <h2 class="profile-name">
+          <i class="fa-solid fa-crown"></i>
+          あのまろちゃん
+        </h2>
+        <div class="profile-id">
+          <i class="fa-brands fa-x-twitter"></i>
+          @anomarochan_222
+        </div>
+        <p class="profile-description">
+          優しさと温かさに溢れる個性豊かなXユーザー。日常の何気ない瞬間を大切にし、創造性とユーモアを通して人々とつながる素敵な存在です。
+        </p>
+      </div>
+    </section>
+
+    <div class="content">
+      <div class="column appear delay-1">
+        <div class="card">
+          <i class="fa-solid fa-chess-queen card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-lightbulb"></i>
+            温かい人間性
+          </h3>
+          <div class="card-content">
+            <p>
+              あのまろちゃんの魅力は、一つひとつの言葉に宿る<span class="highlight">優しさ</span>と<span class="highlight">思いやり</span>です。
+              相手の気持ちに寄り添い、心からの言葉をかける姿勢に、
+              <span class="keyword"><i class="fa-solid fa-hand-holding-heart"></i>共感力</span>
+              <span class="keyword"><i class="fa-solid fa-comment-dots"></i>優しい言葉選び</span>
+              が光ります。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-down connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              何気ない日常の中でも、周囲に
+              <span class="keyword"><i class="fa-solid fa-sun"></i>温かさ</span>
+              を届ける存在として、知らず知らずのうちに多くの人を癒しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-palette card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-star"></i>
+            感性の豊かさ
+          </h3>
+          <div class="card-content">
+            <p>
+              日常の小さな<span class="highlight">美しさや喜び</span>に気づける繊細な感性を持っています。
+              何気ない瞬間を大切にし、それを言葉にして共有する姿は、
+              <span class="keyword"><i class="fa-solid fa-eye"></i>観察力</span>
+              <span class="keyword"><i class="fa-solid fa-feather"></i>繊細さ</span>
+              の表れです。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-right connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              その視点は多くの人に<span class="keyword"><i class="fa-solid fa-glasses"></i>新たな気づき</span>を与え、
+              日常を豊かに彩る力を持っています。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column appear delay-2">
+        <div class="card">
+          <i class="fa-solid fa-comments card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-comments"></i>
+            コミュニケーション能力
+          </h3>
+          <div class="card-content">
+            <p>
+              相手の言葉に<span class="highlight">真摯に向き合い</span>、心からの対話を大切にする姿勢が特徴です。
+              返信の一つひとつに溢れる
+              <span class="keyword"><i class="fa-solid fa-ear-listen"></i>傾聴力</span>
+              <span class="keyword"><i class="fa-solid fa-reply"></i>適切な応答</span>
+              が、多くの人との信頼関係を築いています。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-down connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              時に<span class="keyword"><i class="fa-solid fa-face-smile"></i>ユーモア</span>を交えながらも、
+              相手を尊重する姿勢は、あのまろちゃん自身が気づいていない大きな魅力です。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-gem card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-sparkles"></i>
+            独自の世界観
+          </h3>
+          <div class="card-content">
+            <p>
+              あのまろちゃんの投稿には<span class="highlight">独自の世界観と個性</span>が輝いています。
+              <span class="keyword"><i class="fa-solid fa-fingerprint"></i>独自性</span>
+              <span class="keyword"><i class="fa-solid fa-wand-magic-sparkles"></i>創造性</span>
+              に溢れた表現は、多くの人の心を掴んで離しません。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-right connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              特に<span class="keyword"><i class="fa-solid fa-image"></i>視覚的表現</span>と
+              <span class="keyword"><i class="fa-solid fa-pen-fancy"></i>言葉選び</span>のセンスは、
+              自分では気づいていない特別な才能です。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column appear delay-3">
+        <div class="card">
+          <i class="fa-solid fa-seedling card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            人を育む力
+          </h3>
+          <div class="card-content">
+            <p>
+              あのまろちゃんには、周囲の人の<span class="highlight">可能性を引き出す</span>不思議な力があります。
+              <span class="keyword"><i class="fa-solid fa-sun"></i>肯定的な視点</span>
+              <span class="keyword"><i class="fa-solid fa-handshake"></i>支援する姿勢</span>
+              によって、知らず知らずのうちに多くの人の成長を後押ししています。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-down connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              その <span class="keyword"><i class="fa-solid fa-fire"></i>情熱</span>と
+              <span class="keyword"><i class="fa-solid fa-shield-heart"></i>包容力</span>は、
+              自分では気づかないあのまろちゃん最大の魅力かもしれません。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-chess-rook card-icon"></i>
+          <h3 class="card-title">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            バランス感覚
+          </h3>
+          <div class="card-content">
+            <p>
+              <span class="highlight">シリアスとユーモア</span>のバランスが絶妙で、
+              <span class="keyword"><i class="fa-solid fa-scale-balanced"></i>調和</span>
+              <span class="keyword"><i class="fa-solid fa-yin-yang"></i>多面性</span>
+              を持ち合わせています。いろいろな側面を持ちながらも一貫した誠実さがあるため、
+              多くの人が安心感を抱いて接することができます。
+            </p>
+            <div class="connection">
+              <div class="connection-line"></div>
+              <i class="fa-solid fa-arrow-right connection-icon"></i>
+              <div class="connection-line"></div>
+            </div>
+            <p>
+              <span class="keyword"><i class="fa-solid fa-compass"></i>適応力</span>と
+              <span class="keyword"><i class="fa-solid fa-anchor"></i>芯の強さ</span>が共存する
+              稀有な人柄は、自分で思っている以上に周囲から高く評価されています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-note">
+        <i class="fa-solid fa-lightbulb"></i>
+        <p>あのまろちゃんが自分で気づいていない魅力を紐解いてみました</p>
+      </div>
+      <div class="footer-note">
+        <i class="fa-solid fa-calendar"></i>
+        <p>2025年3月10日作成</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add scroll animation
+      const animatedElements = document.querySelectorAll('.appear');
+      
+      function checkIfInView() {
+        animatedElements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }
+        });
+      }
+      
+      // Run on load
+      checkIfInView();
+      
+      // Run on scroll
+      window.addEventListener('scroll', checkIfInView);
+
+      // Add hover effects for keywords
+      const keywords = document.querySelectorAll('.keyword');
+      keywords.forEach(keyword => {
+        keyword.addEventListener('mouseenter', function() {
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.classList.add('fa-fade');
+          }
+        });
+        
+        keyword.addEventListener('mouseleave', function() {
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-fade');
+          }
+        });
+      });
+
+      // Add hover effects for card icons
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          const icon = this.querySelector('.card-icon');
+          if (icon) {
+            icon.classList.add('fa-fade');
+          }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          const icon = this.querySelector('.card-icon');
+          if (icon) {
+            icon.classList.remove('fa-fade');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
