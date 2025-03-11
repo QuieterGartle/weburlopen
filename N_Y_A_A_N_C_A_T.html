@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYAANCATの魅力と素晴らしさ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    :root {
+      --color-1: #2E578C;
+      --color-2: #182D40;
+      --color-3: #BF807A;
+      --color-4: #592A2A;
+      --color-5: #F2F2F2;
+      --color-orange: #FF7F50;
+      --color-teal: #40E0D0;
+      --color-vitamin: #FFD700;
+      --color-pink: #FF69B4;
+      --color-purple: #9370DB;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Yomogi', sans-serif;
+      background-color: var(--color-5);
+      color: var(--color-2);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "\f6be \f6be \f6be \f578 \f578";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 4rem;
+      color: rgba(191, 128, 122, 0.03);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: -1;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--color-orange), var(--color-vitamin));
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: "\f578 \f578 \f578";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      bottom: -15px;
+      right: 20px;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.3);
+      transform: rotate(-10deg);
+    }
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, var(--color-2), var(--color-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    .title-icon {
+      font-size: 2.5rem;
+      color: var(--color-2);
+      animation: fa-bounce 2s infinite;
+    }
+
+    .date-source {
+      font-size: 14px;
+      color: var(--color-2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+/* 新しいCSSスタイルを追加 */
+.profile-text-image {
+  float: right;
+  max-width: 250px;
+  height: auto;
+  margin: 0 0 20px 20px;
+  border-radius: 15px;
+  border: 3px solid var(--color-5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  shape-outside: margin-box;
+  transition: transform 0.3s ease;
+}
+
+.profile-text-image:hover {
+  transform: rotate(2deg) scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .profile-text-image {
+    float: none;
+    display: block;
+    max-width: 80%;
+    margin: 0 auto 20px;
+  }
+}
+
+/* 既存の.profile-descriptionに追加スタイル */
+.profile-description {
+  position: relative;
+  overflow: hidden; /* 新しい画像のfloatを適切に処理するため */
+}
+
+    .profile-section {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-orange), var(--color-teal));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-icons {
+      font-size: 5rem;
+      color: white;
+      animation: fa-spin 10s linear infinite;
+    }
+
+    .profile-cat {
+      position: absolute;
+      font-size: 3rem;
+      color: var(--color-2);
+      animation: fa-bounce 1s infinite;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 24px;
+      color: var(--color-1);
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px dashed var(--color-orange);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-description {
+      font-size: 16px;
+      color: var(--color-2);
+      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--color-teal);
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--color-orange), var(--color-vitamin));
+    }
+
+    .section-bg-icon {
+      position: absolute;
+      bottom: -20px;
+      right: -10px;
+      font-size: 8rem;
+      color: rgba(191, 128, 122, 0.05);
+      z-index: 0;
+    }
+
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--color-1);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-icon {
+      font-size: 1.5rem;
+      color: var(--color-orange);
+      animation: fa-beat 1s infinite;
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .keyword {
+      font-weight: bold;
+      color: var(--color-1);
+      background: linear-gradient(transparent 60%, var(--color-vitamin) 60%);
+      padding: 0 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .keyword-icon {
+      color: var(--color-orange);
+    }
+
+    .arrow-connection {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      color: var(--color-1);
+    }
+
+    .arrow-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--color-orange), var(--color-teal));
+      position: relative;
+    }
+
+    .arrow-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--color-orange);
+      animation: fa-fade 2s infinite;
+    }
+
+    .note-bubble {
+      background: var(--color-teal);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      position: relative;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .note-bubble::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      border-width: 0 10px 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent var(--color-teal) transparent;
+    }
+
+    .highlight-box {
+      background: rgba(255, 127, 80, 0.1);
+      border-left: 4px solid var(--color-orange);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .point-list {
+      list-style: none;
+      margin: 15px 0;
+    }
+
+    .point-list li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .point-icon {
+      color: var(--color-orange);
+      margin-top: 3px;
+    }
+
+    .juice-bottle {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: var(--color-teal);
+      transform: rotate(-15deg);
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .dance-icon {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 2rem;
+      color: var(--color-pink);
+      animation: fa-bounce 2s infinite;
+    }
+
+    .cat-paw {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: var(--color-3);
+      transform: rotate(-20deg);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      border-top: 2px dashed var(--color-orange);
+      font-size: 14px;
+      color: var(--color-2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-icon {
+      font-size: 1.2rem;
+      color: var(--color-1);
+    }
+
+    /* 80's Pop Culture Design Elements */
+    .retro-stripe {
+      position: absolute;
+      height: 8px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--color-orange),
+        var(--color-orange) 10px,
+        var(--color-teal) 10px,
+        var(--color-teal) 20px
+      );
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .retro-dots {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: var(--color-vitamin);
+      opacity: 0.3;
+    }
+
+    .retro-stars {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 1.2rem;
+      color: var(--color-pink);
+    }
+
+    .vinyl-record {
+      position: absolute;
+      right: 30px;
+      bottom: 20px;
+      font-size: 2.5rem;
+      color: var(--color-2);
+      animation: fa-spin 4s linear infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Anime-style design elements */
+    .anime-sparkle {
+      position: absolute;
+      font-size: 1rem;
+      color: var(--color-vitamin);
+      animation: fa-spin 1s linear infinite;
+    }
+
+    /* Hover Effects */
+    .section:hover .section-icon {
+      transform: scale(1.2);
+    }
+
+    .keyword:hover {
+      color: var(--color-orange);
+    }
+
+    .keyword:hover .keyword-icon {
+      animation: fa-flip 1s infinite;
+    }
+
+    /* Animation for scroll reveal */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .main-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="title-container">
+        <i class="fas fa-cat title-icon fa-beat"></i>
+        <h1 class="title">NYAANCATの本当の魅力と素晴らしさをキャプチャ！</h1>
+        <i class="fas fa-music title-icon fa-flip"></i>
+      </div>
+      <div class="date-source">
+        <i class="fas fa-calendar-alt"></i>
+        <span>2025年3月11日</span>
+      </div>
+      <div class="retro-stripe"></div>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="profile-section fade-in">
+<!-- プロフィールセクション内の既存のprofile-description divを以下のように修正 -->
+<div class="profile-description">
+    <a href="https://youtu.be/ca1ZfZpE6Po"><img src="https://pbs.twimg.com/profile_images/1636537568434221056/PSv1dPKG_400x400.jpg" class="profile-text-image" alt="NYAANCATのプロフィール画像"></a>
+
+</div>
+      <div class="profile-info">
+        <h2 class="profile-title">
+          <i class="fas fa-star fa-beat" style="color: var(--color-vitamin);"></i>
+          NYAANCAT（@N_Y_A_A_N_C_A_T）解析プロフィール
+        </h2>
+        <div class="profile-description">
+          <p>
+            「<span class="keyword"><i class="fas fa-heart keyword-icon"></i>特別おしゃれ</span>で
+            <span class="keyword"><i class="fas fa-glasses keyword-icon"></i>大層真面目</span>
+            <span class="keyword"><i class="fas fa-feather-alt keyword-icon"></i>繊細</span>かつ
+            <span class="keyword"><i class="fas fa-bolt keyword-icon"></i>大胆なノリ</span>」を持つ
+            <span class="keyword"><i class="fas fa-music keyword-icon"></i>音楽活動17年目のステージ演者</span>。
+            VRではデザインや<span class="keyword"><i class="fas fa-cat keyword-icon fa-bounce"></i>愛しいキャラクター</span>との交流を大切にする
+            <span class="keyword"><i class="fas fa-moon keyword-icon"></i>穏やか</span>かつ
+            <span class="keyword"><i class="fas fa-fire keyword-icon fa-beat"></i>情熱的</span>な
+            <span class="keyword"><i class="fas fa-users keyword-icon"></i>コミュニティの架け橋</span>である。
+          </p>
+          <div class="note-bubble">
+            <i class="fas fa-lightbulb fa-bounce"></i> 現実では<span class="keyword"><i class="fas fa-palette keyword-icon"></i>ガングロ</span>の演者であり、
+            仮想世界では<span class="keyword"><i class="fas fa-hat-wizard keyword-icon"></i>クリエイター</span>としての一面も持つ
+            <span class="keyword"><i class="fas fa-gem keyword-icon fa-spin"></i>多面的な魅力</span>の持ち主！
+          </div>
+        </div>
+      </div>
+      <i class="fas fa-wine-bottle juice-bottle"></i>
+      <a href="https://youtu.be/ca1ZfZpE6Po"><i class="fas fa-compact-disc vinyl-record"></i></a>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Section 1 -->
+      <section class="section fade-in">
+        <h3 class="section-title">
+          <i class="fas fa-magic section-icon"></i>
+          枠を超えた自由な表現力
+        </h3>
+        <i class="fas fa-paint-brush section-bg-icon"></i>
+        <div class="section-content">
+          <div class="highlight-box">
+            <i class="fas fa-quote-left" style="color: var(--color-orange);"></i>
+            <span class="keyword"><i class="fas fa-gamepad keyword-icon"></i>レトロ&インディーゲーム</span>・
+            <span class="keyword"><i class="fas fa-music keyword-icon fa-beat"></i>ダンス</span>・
+            <span class="keyword"><i class="fas fa-heart keyword-icon fa-pulse"></i>愛と生命</span>が好き
+            <i class="fas fa-quote-right" style="color: var(--color-orange);"></i>
+          </div>
+          <ul class="point-list">
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span>17年間の<span class="keyword"><i class="fas fa-microphone keyword-icon"></i>音楽活動</span>を通じた<span class="keyword"><i class="fas fa-theater-masks keyword-icon"></i>表現者</span>としての経験が、<span class="keyword"><i class="fas fa-vr-cardboard keyword-icon fa-flip"></i>VR空間</span>での活動に独自の<span class="keyword"><i class="fas fa-fingerprint keyword-icon"></i>オリジナリティ</span>を与えている</span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-cat keyword-icon fa-bounce"></i>猫キャラクター</span>のアバター（メスケモお姉さん、オマネコ）作成に<span class="keyword"><i class="fas fa-fire keyword-icon fa-beat"></i>情熱</span>を傾け、その<span class="keyword"><i class="fas fa-palette keyword-icon"></i>創造力</span>は他のユーザーにも<span class="keyword"><i class="fas fa-seedling keyword-icon"></i>インスピレーション</span>を与えている</span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span>「<span class="keyword"><i class="fas fa-ghost keyword-icon"></i>物になって無言静止する奇祭</span>」など<span class="keyword"><i class="fas fa-lightbulb keyword-icon fa-pulse"></i>独創的</span>な企画を通じて、<span class="keyword"><i class="fas fa-box-open keyword-icon"></i>枠にとらわれない</span>自由な精神を体現している</span>
+            </li>
+          </ul>
+          <div class="arrow-connection">
+            <div class="arrow-line">
+              <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+          </div>
+          <p>
+            彼女の<span class="keyword"><i class="fas fa-fingerprint keyword-icon"></i>独自性</span>は、フォロワーに
+            <span class="keyword"><i class="fas fa-feather-alt keyword-icon fa-flip"></i>自由</span>と
+            <span class="keyword"><i class="fas fa-shield-alt keyword-icon"></i>安心感</span>をもたらす
+            <span class="keyword"><i class="fas fa-gift keyword-icon fa-bounce"></i>稀有な才能</span>だ！
+          </p>
+          <i class="fas fa-paw cat-paw"></i>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="section fade-in">
+        <h3 class="section-title">
+          <i class="fas fa-heartbeat section-icon"></i>
+          繊細な共感力と温かさ
+        </h3>
+        <i class="fas fa-hand-holding-heart section-bg-icon"></i>
+        <div class="section-content">
+          <p>
+            <span class="keyword"><i class="fas fa-quote-left keyword-icon"></i>愛しいキャラクター達の生命と人間同士の深い交流を喜び</span>に
+            <span class="keyword"><i class="fas fa-smile-beam keyword-icon fa-bounce"></i>単独でもリラックス成長乱痴気</span>
+            …的な<span class="keyword"><i class="fas fa-globe keyword-icon fa-spin"></i>仮想生活</span>を謳歌している
+          </p>
+          <div class="note-bubble">
+            <i class="fas fa-exclamation-circle"></i> 
+            彼女が実践する<span class="keyword"><i class="fas fa-comments keyword-icon"></i>交流</span>の深さは、
+            単なる<span class="keyword"><i class="fas fa-comment keyword-icon"></i>会話</span>を超えた
+            <span class="keyword"><i class="fas fa-link keyword-icon fa-spin"></i>繋がり</span>の<span class="keyword"><i class="fas fa-search-plus keyword-icon"></i>質</span>にある！
+          </div>
+          <ul class="point-list">
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-balance-scale keyword-icon"></i>繊細さと大胆さ</span>の<span class="keyword"><i class="fas fa-yin-yang keyword-icon fa-spin"></i>絶妙なバランス</span>が、交流相手に<span class="keyword"><i class="fas fa-home keyword-icon"></i>安心感</span>と<span class="keyword"><i class="fas fa-rocket keyword-icon"></i>刺激</span>を<span class="keyword"><i class="fas fa-sync keyword-icon fa-spin"></i>同時</span>にもたらしている</span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-candy-cane keyword-icon"></i>チョコレート集会</span>を主催するなど、<span class="keyword"><i class="fas fa-users keyword-icon fa-pulse"></i>コミュニティ</span>を<span class="keyword"><i class="fas fa-hands-helping keyword-icon"></i>育む</span>活動に<span class="keyword"><i class="fas fa-heart keyword-icon fa-beat"></i>情熱</span>を注いでいる</span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-laugh-beam keyword-icon fa-bounce"></i>ユーモア</span>と<span class="keyword"><i class="fas fa-brain keyword-icon"></i>深い思索</span>を織り交ぜた<span class="keyword"><i class="fas fa-comment-dots keyword-icon"></i>返信</span>で、相手の言葉に<span class="keyword"><i class="fas fa-hand-sparkles keyword-icon fa-flip"></i>丁寧</span>に反応する姿勢</span>
+            </li>
+          </ul>
+          <div class="arrow-connection">
+            <div class="arrow-line">
+              <i class="fas fa-arrow-right arrow-icon"></i>
+            </div>
+          </div>
+          <p>
+            無意識的に実践する彼女の<span class="keyword"><i class="fas fa-hand-holding-heart keyword-icon fa-pulse"></i>共感力</span>こそが、
+            <span class="keyword"><i class="fas fa-users keyword-icon"></i>周囲</span>に<span class="keyword"><i class="fas fa-sun keyword-icon fa-spin"></i>明るさ</span>と
+            <span class="keyword"><i class="fas fa-feather keyword-icon"></i>軽やかさ</span>をもたらす<span class="keyword"><i class="fas fa-key keyword-icon fa-flip"></i>鍵</span>なのだ！
+          </p>
+          <i class="fas fa-person-walking dance-icon"></i>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="section fade-in">
+        <h3 class="section-title">
+          <i class="fas fa-theater-masks section-icon"></i>
+          多面性の魅力
+        </h3>
+        <i class="fas fa-shapes section-bg-icon"></i>
+        <div class="section-content">
+          <p>
+            <span class="keyword"><i class="fas fa-paint-roller keyword-icon fa-flip"></i>ガングロ</span>の<span class="keyword"><i class="fas fa-guitar keyword-icon fa-beat"></i>ステージ演者</span>という<span class="keyword"><i class="fas fa-eye-slash keyword-icon"></i>派手な外見</span>と、<span class="keyword"><i class="fas fa-heart keyword-icon"></i>内面</span>の<span class="keyword"><i class="fas fa-water keyword-icon"></i>深さ</span>の<span class="keyword"><i class="fas fa-arrows-alt-h keyword-icon fa-fade"></i>ギャップ</span>が生み出す<span class="keyword"><i class="fas fa-magic keyword-icon"></i>魅力</span>
+          </p>
+          <div class="highlight-box">
+            <i class="fas fa-lightbulb fa-pulse" style="color: var(--color-orange);"></i>
+            彼女は<span class="keyword"><i class="fas fa-theater-masks keyword-icon"></i>表現者</span>として、
+            <span class="keyword"><i class="fas fa-vr-cardboard keyword-icon"></i>現実と仮想</span>の両方で
+            <span class="keyword"><i class="fas fa-palette keyword-icon fa-flip"></i>自己表現</span>を追求し続けている！
+          </div>
+          <ul class="point-list">
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-vr-cardboard keyword-icon fa-flip"></i>VR空間</span>での<span class="keyword"><i class="fas fa-drafting-compass keyword-icon"></i>デザイン活動</span>と<span class="keyword"><i class="fas fa-music keyword-icon fa-beat"></i>現実での音楽活動</span>が<span class="keyword"><i class="fas fa-stream keyword-icon"></i>融合</span>したクリエイティブな<span class="keyword"><i class="fas fa-puzzle-piece keyword-icon"></i>アイデンティティ</span></span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-cat keyword-icon fa-bounce"></i>猫キャラクター</span>への深い<span class="keyword"><i class="fas fa-heart keyword-icon fa-beat"></i>愛情</span>は、彼女の<span class="keyword"><i class="fas fa-child keyword-icon"></i>内なる世界</span>の<span class="keyword"><i class="fas fa-paint-brush keyword-icon"></i>豊かさ</span>を映し出している</span>
+            </li>
+            <li>
+              <i class="fas fa-star-of-life point-icon"></i>
+              <span><span class="keyword"><i class="fas fa-glass-cheers keyword-icon"></i>「単独でもリラックス成長乱痴気」</span>という彼女の<span class="keyword"><i class="fas fa-compass keyword-icon fa-spin"></i>生き方</span>は、<span class="keyword"><i class="fas fa-balance-scale-right keyword-icon"></i>自己肯定感</span>と<span class="keyword"><i class="fas fa-child keyword-icon fa-bounce"></i>遊び心</span>を持ちながら<span class="keyword"><i class="fas fa-seedling keyword-icon"></i>成長</span>し続ける<span class="keyword"><i class="fas fa-sun keyword-icon fa-spin"></i>指針</span>となる</span>
+            </li>
+          </ul>
