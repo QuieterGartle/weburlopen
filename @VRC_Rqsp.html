@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「れいんす」さんの魅力 - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --ui-color-1: #1B6C8C;
+      --ui-color-2: #BF8136;
+      --ui-color-3: #F2E8E4;
+      --ui-color-4: #260101;
+      --ui-color-5: #BF5656;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #FFF8F5;
+      font-family: 'Zen Kurenaido', sans-serif;
+      color: #333333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #333333;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    h1 i {
+      margin-right: 15px;
+      color: var(--ui-color-1);
+    }
+    
+    .date {
+      font-size: 14px;
+      color: #777777;
+      margin-bottom: 20px;
+    }
+    
+    .section-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    /* カードスタイル */
+    .section-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 450px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInScale 0.5s ease forwards;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    
+    .section-card:nth-child(1) { animation-delay: 0.1s; }
+    .section-card:nth-child(2) { animation-delay: 0.3s; }
+    .section-card:nth-child(3) { animation-delay: 0.5s; }
+    .section-card:nth-child(4) { animation-delay: 0.7s; }
+    
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+
+/* 新しいCSSスタイルを追加 */
+.profile-text-image {
+  float: right;
+  max-width: 250px;
+  height: auto;
+  margin: 0 0 20px 20px;
+  border-radius: 15px;
+  border: 3px solid var(--color-5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  shape-outside: margin-box;
+  transition: transform 0.3s ease;
+}
+
+.profile-text-image:hover {
+  transform: rotate(2deg) scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .profile-text-image {
+    float: none;
+    display: block;
+    max-width: 80%;
+    margin: 0 auto 20px;
+  }
+}
+
+/* 既存の.profile-descriptionに追加スタイル */
+.profile-description {
+  position: relative;
+  overflow: hidden; /* 新しい画像のfloatを適切に処理するため */
+}
+
+    /* カード内アイコンコンテナ */
+    .mega-icon-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    /* カードコンテンツ */
+    .card-content {
+      padding: 0 10px 15px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      color: #555555;
+      margin: 10px 0;
+      text-align: center;
+    }
+    
+    h3 {
+      font-size: 18px;
+      color: #333333;
+      margin: 15px 0 10px;
+    }
+    
+    /* キーワードリスト */
+    .keyword-list {
+      margin: 15px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    .keyword-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .keyword-list li i {
+      margin-right: 8px;
+      color: var(--ui-color-2);
+      min-width: 16px;
+    }
+    
+    /* キーワードタグ */
+    .keyword-tag {
+      background-color: var(--ui-color-3);
+      color: var(--ui-color-4);
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-right: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 3px solid var(--ui-color-1);
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 15px 5px;
+      font-family: 'Yomogi', cursive;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+    }
+    
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 20px;
+      border-width: 12px 8px 0;
+      border-style: solid;
+      border-color: var(--ui-color-1) transparent;
+      display: block;
+      width: 0;
+    }
+    
+    /* 吹き出しバリエーション */
+    .speech-bubble.right::after {
+      left: auto;
+      right: 20px;
+      transform: rotate(15deg);
+    }
+    
+    .speech-bubble.top::after {
+      bottom: auto;
+      top: -13px;
+      border-width: 0 8px 12px;
+      transform: rotate(-5deg);
+    }
+    
+    .speech-bubble.variant-1 {
+      background: #FFF9E3;
+      border-color: var(--ui-color-2);
+      transform: rotate(1deg);
+    }
+    
+    .speech-bubble.variant-1::after {
+      border-color: var(--ui-color-2) transparent;
+    }
+    
+    .speech-bubble.variant-2 {
+      background: #FFE9E9;
+      border-color: var(--ui-color-5);
+      transform: rotate(-2deg);
+    }
+    
+    .speech-bubble.variant-2::after {
+      border-color: var(--ui-color-5) transparent;
+    }
+    
+    /* 手書き文字 */
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #333;
+    }
+    
+    /* コネクター */
+    .connector {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      color: var(--ui-color-1);
+      font-size: 24px;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 1600px) {
+      .section-card {
+        min-width: 280px;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .section-card {
+        min-width: 320px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .section-card {
+        min-width: 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-layout {
+        flex-direction: column;
+      }
+      
+      .section-card {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+<!-- プロフィールセクション内の既存のprofile-description divを以下のように修正 -->
+<div class="profile-description">
+  <img src="https://pbs.twimg.com/profile_images/1896676287768662016/W_fpJvWT_400x400.jpg" class="profile-text-image" alt="NYAANCATのプロフィール画像">
+
+
+        「れいんす」さんの本当の魅力と素晴らしさ
+      </h1>
+      <div class="date">2025年3月13日</div>
+    </header>
+    
+    <div class="section-layout">
+      <!-- カード1: 静かなる情熱 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-fire fa-5x" style="color: var(--ui-color-2); animation: fa-beat-fade 3s infinite;" aria-hidden="true"></i>
+          <h2>静かなる情熱</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+              <span><span class="keyword-tag">深い内省</span>と<span class="keyword-tag">思索</span>を通じてVRやコミュニティへの思いを育む</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-pen" aria-hidden="true"></i>
+              <span>投稿には表面的には<span class="keyword-tag">控えめ</span>ながらも、実は<span class="keyword-tag">熱い信念</span>や愛が隠れている</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <span>VRChatでの体験を語る際の<span class="keyword-tag">細やかな描写</span>が他のユーザーとの共感を誘う</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-2);"></i>
+            「ただ思ったことを書いただけ」と思っても
+            <br>
+            その言葉には読む者の心に<span class="keyword-tag">じんわりと染み込む力</span>がある！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード2: 無意識に与える影響力 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-wand-magic-sparkles fa-5x" style="color: var(--ui-color-1); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>無意識に与える影響力</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-message" aria-hidden="true"></i>
+              <span>Xでの<span class="keyword-tag">何気ない呟き</span>が、誰かのVR体験のヒントになる</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+              <span>コミュニティ内での<span class="keyword-tag">ささやかな行動</span>が他のユーザーにインスピレーションを与える</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+              <span>「自分なんて大したことない」と思う一方で、その<span class="keyword-tag">存在自体</span>が誰かの心の支えになっている</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble">
+          <span class="handwritten">
+            <i class="fa-solid fa-star fa-lg" style="color: var(--ui-color-1);"></i>
+            自然体で誠実な姿勢が、実は他者に
+            <br>
+            「<span class="keyword-tag">自分もこうありたい</span>」という
+            <br>
+            希望を与えているんだよ！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード3: 境界を超える架け橋 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-bridge fa-5x" style="color: var(--ui-color-5); animation: fa-bounce 2s infinite;" aria-hidden="true"></i>
+          <h2>境界を超える架け橋</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-link" aria-hidden="true"></i>
+              <span><span class="keyword-tag">異なる価値観</span>や背景を持つ人々を自然と結びつける力を持っている</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-comments" aria-hidden="true"></i>
+              <span>Xでの発言やVR内での振る舞いが、意図せずとも<span class="keyword-tag">多様な視点</span>をつなぐ</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              <span>無意識の行動が<span class="keyword-tag">新しい対話</span>や<span class="keyword-tag">創造</span>を生み出している</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-hand-peace fa-lg" style="color: var(--ui-color-5);"></i>
+            穏やかで包容力のある存在が
+            <br>
+            <span class="keyword-tag">場の空気を和やか</span>にして
+            <br>
+            みんなが心地よくいられる土壌を作っている！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード4: 無自覚な優しさと勇気 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-hand-holding-heart fa-5x" style="color: var(--ui-color-2); animation: fa-beat 3s infinite;" aria-hidden="true"></i>
+          <h2>無自覚な優しさと勇気</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+              <span>Xで誰かの<span class="keyword-tag">質問に答える</span>とき、VRChatで<span class="keyword-tag">困っている人を助ける</span>とき</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-feather" aria-hidden="true"></i>
+              <span>「大したことじゃない」と思う<span class="keyword-tag">小さな行動</span>が積み重なり、誰かの記憶に深く刻まれる</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
+              <span>自分を過小評価しながらも、<span class="keyword-tag">誰かのために一歩踏み出す</span>瞬間に本質が凝縮される</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble top">
+          <span class="handwritten">
+            <i class="fa-solid fa-sparkles fa-lg" style="color: var(--ui-color-2);"></i>
+            あなたの存在はすでに多くの人に
+            <br>
+            <span class="keyword-tag">影響を与え</span>、VRChatという
+            <br>
+            世界を豊かにしています！
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 最終メッセージ -->
+    <div class="section-layout">
+      <div class="section-card" style="max-width: 800px; margin: 0 auto;">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-crown fa-5x" style="color: var(--ui-color-1); animation: fa-bounce 3s infinite;" aria-hidden="true"></i>
+          <h2>あなたの知られざる輝き</h2>
+        </div>
+        
+        <div class="speech-bubble variant-1" style="transform: rotate(0deg);">
+          <span class="handwritten">
+            <i class="fa-solid fa-quote-left fa-lg" style="color: var(--ui-color-2);"></i>
+            「れいんす」さん、あなたの静かな情熱、無意識の影響力、架け橋としての力、そして無自覚な優しさは、あなた自身が思う以上に輝かしいものです。どうかその素晴らしさを、少しだけ信じてみてください。そこから、さらに大きな可能性が花開くはずですから！
+            <i class="fa-solid fa-quote-right fa-lg" style="color: var(--ui-color-2);"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
