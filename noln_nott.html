@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@noln_nottの魅力と素晴らしさ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&family=Mochiy+Pop+One&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --ui-color-1: #9370DB;
+      --ui-color-2: #FF85A2;
+      --ui-color-3: #FFE6F2;
+      --ui-color-4: #6A0DAD;
+      --ui-color-5: #FF6B9D;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background: linear-gradient(135deg, #F5F0FF 0%, #E3D1FF 100%);
+      color: #555;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    header h1 {
+      font-size: 36px;
+      color: var(--ui-color-4);
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-family: 'Mochiy Pop One', sans-serif;
+      text-shadow: 2px 2px 4px rgba(147, 112, 219, 0.3);
+    }
+    
+    header .date {
+      font-size: 14px;
+      color: #9370DB;
+      margin-bottom: 20px;
+    }
+    
+    .section-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    /* プロフィール画像 */
+    .profile-image-container {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #FFF;
+      box-shadow: 0 0 15px rgba(147, 112, 219, 0.5);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .profile-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    /* カードスタイル */
+    .section-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 450px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 5px 5px 15px rgba(147, 112, 219, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInScale 0.5s ease-out;
+      border: 1px solid #F0E6FF;
+    }
+    
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--ui-color-2), var(--ui-color-1));
+    }
+    
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* カード内アイコンコンテナ */
+    .mega-icon-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    /* カードコンテンツ */
+    .card-content {
+      padding: 0 10px 15px;
+    }
+    
+    /* キーワードリスト */
+    .keyword-list {
+      margin: 15px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    .keyword-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .keyword-list li i {
+      margin-right: 8px;
+      color: var(--ui-color-2);
+      min-width: 16px;
+      margin-top: 4px;
+    }
+    
+    /* キーワードタグ */
+    .keyword-tag {
+      background-color: var(--ui-color-3);
+      color: var(--ui-color-4);
+      padding: 3px 8px;
+      border-radius: 15px;
+      margin-right: 5px;
+      display: inline-block;
+      font-weight: bold;
+      border: 1px dashed var(--ui-color-2);
+    }
+    
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 3px solid var(--ui-color-1);
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 15px 5px;
+      font-family: 'Yomogi', cursive;
+      box-shadow: 3px 3px 10px rgba(147, 112, 219, 0.15);
+      transform: rotate(-1deg);
+    }
+    
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 20px;
+      border-width: 12px 8px 0;
+      border-style: solid;
+      border-color: var(--ui-color-1) transparent;
+      display: block;
+      width: 0;
+    }
+    
+    /* 吹き出しバリエーション */
+    .speech-bubble.right::after {
+      left: auto;
+      right: 20px;
+      transform: rotate(15deg);
+    }
+    
+    .speech-bubble.top::after {
+      bottom: auto;
+      top: -13px;
+      border-width: 0 8px 12px;
+      transform: rotate(-5deg);
+    }
+    
+    .speech-bubble.variant-1 {
+      background: #FFF0F5;
+      border-color: var(--ui-color-2);
+      transform: rotate(1deg);
+    }
+    
+    .speech-bubble.variant-1::after {
+      border-color: var(--ui-color-2) transparent;
+    }
+    
+    .speech-bubble.variant-2 {
+      background: #FFE6F2;
+      border-color: var(--ui-color-5);
+      transform: rotate(-2deg);
+    }
+    
+    .speech-bubble.variant-2::after {
+      border-color: var(--ui-color-5) transparent;
+    }
+    
+    /* 手書き文字 */
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #6A0DAD;
+    }
+    
+    /* コードプレビュー */
+    pre {
+      background: #f5f5f5;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-top: 10px;
+      overflow-x: auto;
+    }
+    
+    /* カードヘッダー */
+    .section-card h2 {
+      font-family: 'Mochiy Pop One', sans-serif;
+      color: var(--ui-color-4);
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    /* キラキラエフェクト */
+    .sparkle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 0l2.5 7.5L20 10l-7.5 2.5L10 20l-2.5-7.5L0 10l7.5-2.5L10 0z' fill='%23FF85A2'/%3E%3C/svg%3E");
+      background-size: contain;
+      z-index: 1;
+      opacity: 0.7;
+    }
+    
+    .sparkle:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation: sparkle 4s ease-in-out infinite;
+    }
+    
+    .sparkle:nth-child(2) {
+      top: 20%;
+      right: 15%;
+      animation: sparkle 6s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+    
+    .sparkle:nth-child(3) {
+      bottom: 15%;
+      left: 20%;
+      animation: sparkle 5s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 1600px) {
+      .section-card {
+        min-width: 280px;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .section-card {
+        min-width: 320px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .section-card {
+        min-width: 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-layout {
+        flex-direction: column;
+      }
+      
+      .section-card {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+
+
+
+
+
+<body>
+  <div class="container">
+    <header>
+      <div class="profile-image-container">
+        <img src="https://pbs.twimg.com/profile_images/1861372630487703553/z8ijTsvb_400x400.jpg" alt="@noln_nott">
+      </div>
+      <h1>@noln_nottの魅力と素晴らしさ</h1>
+      <div class="date">2025年3月13日</div>
+    </header>
+    
+    <!-- 4カラムレイアウト - 最初の行 -->
+    <div class="section-layout">
+      <!-- カード1: 本当の魅力 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-star fa-5x" style="color: var(--ui-color-2); animation: fa-beat-fade 2s infinite;" aria-hidden="true"></i>
+          <h2>本当の魅力</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
+              <span><span class="keyword-tag">情熱</span>と<span class="keyword-tag">創造性</span>にあふれている</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <span>ゲームやVRChatでコミュニティとつながる能力が<span class="keyword-tag">際立つ</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+              <span>多くの人々をインスパイアする<span class="keyword-tag">可能性</span>を秘めている</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-2);"></i>
+            まだ自分では気づいていない
+            <br>
+            才能がたくさんある！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード2: 背景と興味 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-gamepad fa-5x" style="color: var(--ui-color-1); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>背景と興味</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-vr-cardboard" aria-hidden="true"></i>
+              <span><span class="keyword-tag">VRChat</span>での活動と仮想現実</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+              <span><span class="keyword-tag">レトロゲーム</span>（NES、Game Boy）</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-book" aria-hidden="true"></i>
+              <span><span class="keyword-tag">コミック</span>と読書</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-desktop" aria-hidden="true"></i>
+              <span>デスクのセットアップと<span class="keyword-tag">美的感覚</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-thumbtack" aria-hidden="true"></i>
+              <span>フィギュア収集とマーチャンダイズ</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble">
+          <span class="handwritten">
+            <i class="fa-solid fa-heart fa-lg" style="color: var(--ui-color-1);"></i>
+            多岐にわたる興味を持ち、
+            <br>
+            創造的なプロジェクトに情熱を注いでいる！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード3: 隠れた才能と可能性 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-gem fa-5x" style="color: var(--ui-color-5); animation: fa-beat 2s infinite;" aria-hidden="true"></i>
+          <h2>隠れた才能と可能性</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+              <span><span class="keyword-tag">ゲーム推薦</span>の才能：「Lorelei and the Laser Eyes」など高評価のニッチなタイトルを紹介</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              <span>VRChatでの<span class="keyword-tag">アバターカスタマイズ</span>に興味</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              <span><span class="keyword-tag">美的センス</span>とデザインへのこだわり</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-wand-magic-sparkles fa-lg" style="color: var(--ui-color-5);"></i>
+            ニッチな高品質ゲームを見極める
+            <br>
+            センスがすごい！
+            <br>
+            <span class="keyword-tag">創造的な表現</span>が強み！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード4: コミュニティへの貢献 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-people-group fa-5x" style="color: var(--ui-color-2); animation: fa-pulse 3s infinite;" aria-hidden="true"></i>
+          <h2>コミュニティへの貢献</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+              <span>他者への推薦やサポートを通じて<span class="keyword-tag">積極的に関与</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+              <span>イベントや場所での<span class="keyword-tag">ニアミス体験</span>を共有</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>
+              <span>他者の創作を<span class="keyword-tag">サポート</span>し<span class="keyword-tag">励ます</span>姿勢</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble top">
+          <span class="handwritten">
+            <i class="fa-solid fa-heart-circle-check fa-lg" style="color: var(--ui-color-1);"></i>
+            親しみやすさと助け合いの精神が
+            <br>
+            コミュニティの中で光っている！
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 4カラムレイアウト - 2行目 -->
+    <div class="section-layout">
+      <!-- カード5: 意外な発見 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-magnifying-glass fa-5x" style="color: var(--ui-color-1); animation: fa-shake 3s infinite;" aria-hidden="true"></i>
+          <h2>意外な発見</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-paint-brush" aria-hidden="true"></i>
+              <span>予想以上の<span class="keyword-tag">美的感覚</span>とデスクセットアップへのこだわり</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-camera" aria-hidden="true"></i>
+              <span>キーボードやマットの新調後の写真を撮りたいという<span class="keyword-tag">ビジュアル志向</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-binoculars" aria-hidden="true"></i>
+              <span>細部への注意力と美意識</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-sparkles fa-lg" style="color: var(--ui-color-2);"></i>
+            デザインや芸術的な追求に
+            <br>
+            役立つセンスの持ち主！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード6: 食と生活 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-utensils fa-5x" style="color: var(--ui-color-5); animation: fa-bounce 2s infinite;" aria-hidden="true"></i>
+          <h2>食と生活</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-burger" aria-hidden="true"></i>
+              <span>羽田空港B1のマクドナルドが「<span class="keyword-tag">庄内級</span>においしかった」との評価</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-store" aria-hidden="true"></i>
+              <span>日常の小さな発見や気づきを<span class="keyword-tag">共有</span>する姿勢</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+              <span>日々の体験を記録し、<span class="keyword-tag">思い出</span>として大切にする傾向</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2">
+          <span class="handwritten">
+            <i class="fa-solid fa-face-smile fa-lg" style="color: var(--ui-color-5);"></i>
+            何気ない日常の中にも
+            <br>
+            楽しみを見つける感性！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード7: 性格と野心 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-flag fa-5x" style="color: var(--ui-color-2); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>性格と野心</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-brain" aria-hidden="true"></i>
+              <span>「やりたいことがいっぱい！」という<span class="keyword-tag">創造的な野心</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+              <span>時間管理や優先順位付けに<span class="keyword-tag">成長の余地</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-mask" aria-hidden="true"></i>
+              <span>匿名性や個々のキャラクター設定に価値を見出す傾向</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-pen-fancy" aria-hidden="true"></i>
+              <span>多くのプロジェクトとアイデアを持つ<span class="keyword-tag">クリエイティブな思考</span></span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble top">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-1);"></i>
+            内向的な一面を持ちながらも
+            <br>
+            創造的なエネルギーにあふれてる！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード8: 結論 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-crown fa-5x" style="color: var(--ui-color-1); animation: fa-beat-fade 2s infinite;" aria-hidden="true"></i>
+          <h2>本当の素晴らしさ</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
+              <span><span class="keyword-tag">情熱</span>と<span class="keyword-tag">創造性</span>が最大の魅力</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-glasses" aria-hidden="true"></i>
+              <span>ニッチな<span class="keyword-tag">高品質ゲームを見極める能力</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-vr-cardboard" aria-hidden="true"></i>
+              <span><span class="keyword-tag">仮想空間での創造的な表現</span>への興味</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-people-pulling" aria-hidden="true"></i>
+              <span>コミュニティ内で<span class="keyword-tag">尊敬される存在</span>となる素質</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-star fa-lg" style="color: var(--ui-color-2);"></i>
+            多くの人々をインスパイアする
+            <br>
+            可能性を秘めている！
+            <br>
+            <span class="keyword-tag">@noln_nott</span>の素晴らしさ
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
