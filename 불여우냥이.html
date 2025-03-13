@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>불여우냥이의 그래픽 레코딩</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Pen+Script&family=Gaegu&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --ui-color-1: #D81E5B;
+      --ui-color-2: #FF6B6B;
+      --ui-color-3: #FFF0F3;
+      --ui-color-4: #A61E4D;
+      --ui-color-5: #FFCCD5;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
+      background-color: #FFF0F3;
+      padding: 20px;
+      color: #333333;
+      line-height: 1.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffccd5' fill-opacity='0.3' d='M50 50 Q40 40 30 50 Q20 60 30 70 Q40 80 50 70 Q60 60 50 50 M50 50 Q60 40 70 50 Q80 60 70 70 Q60 80 50 70 Q40 60 50 50'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      border: 3px solid var(--ui-color-2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cherry-blossom {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffccd5' d='M50 0 Q60 40 100 50 Q60 60 50 100 Q40 60 0 50 Q40 40 50 0'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23ffb3c1'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: falling linear infinite;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    
+    @keyframes falling {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(calc(100vh)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .header h1 {
+      font-size: 36px;
+      color: var(--ui-color-4);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .date {
+      font-size: 14px;
+      color: #777777;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .profile-intro {
+      background-color: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      border: 2px solid var(--ui-color-2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 5px solid var(--ui-color-5);
+      background-color: var(--ui-color-3);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .profile-photo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23D81E5B' fill-opacity='0.05' d='M50 50 Q40 40 30 50 Q20 60 30 70 Q40 80 50 70 Q60 60 50 50 M50 50 Q60 40 70 50 Q80 60 70 70 Q60 80 50 70 Q40 60 50 50'/%3E%3C/svg%3E");
+    }
+    
+    .profile-intro p {
+      font-family: 'Gaegu', cursive;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      color: var(--ui-color-4);
+    }
+    
+    .section-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    /* カードスタイル */
+    .section-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 450px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInScale 0.6s ease-out;
+      border: 2px solid var(--ui-color-2);
+    }
+    
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 60px;
+      height: 60px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffccd5' d='M50 0 Q60 40 100 50 Q60 60 50 100 Q40 60 0 50 Q40 40 50 0'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23ffb3c1'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+      transform: rotate(45deg);
+      z-index: 0;
+    }
+    
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* カード内アイコンコンテナ */
+    .mega-icon-container {
+      text-align: center;
+      margin: 15px 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* カードコンテンツ */
+    .card-content {
+      padding: 0 10px 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* キーワードリスト */
+    .keyword-list {
+      margin: 15px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    .keyword-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .keyword-list li i {
+      margin-right: 8px;
+      color: var(--ui-color-2);
+      min-width: 16px;
+    }
+    
+    /* キーワードタグ */
+    .keyword-tag {
+      background-color: var(--ui-color-5);
+      color: var(--ui-color-4);
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-right: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 3px solid var(--ui-color-1);
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 15px 5px;
+      font-family: 'Nanum Pen Script', cursive;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+    }
+    
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 20px;
+      border-width: 12px 8px 0;
+      border-style: solid;
+      border-color: var(--ui-color-1) transparent;
+      display: block;
+      width: 0;
+    }
+    
+    /* 吹き出しバリエーション */
+    .speech-bubble.right::after {
+      left: auto;
+      right: 20px;
+      transform: rotate(15deg);
+    }
+    
+    .speech-bubble.top::after {
+      bottom: auto;
+      top: -13px;
+      border-width: 0 8px 12px;
+      transform: rotate(-5deg);
+    }
+    
+    .speech-bubble.variant-1 {
+      background: #FFF0F3;
+      border-color: var(--ui-color-2);
+      transform: rotate(1deg);
+    }
+    
+    .speech-bubble.variant-1::after {
+      border-color: var(--ui-color-2) transparent;
+    }
+    
+    .speech-bubble.variant-2 {
+      background: #FFE9EC;
+      border-color: var(--ui-color-4);
+      transform: rotate(-2deg);
+    }
+    
+    .speech-bubble.variant-2::after {
+      border-color: var(--ui-color-4) transparent;
+    }
+    
+    /* 手書き文字 */
+    .handwritten {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 1600px) {
+      .section-card {
+        min-width: 280px;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .section-card {
+        min-width: 320px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .section-card {
+        min-width: 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-layout {
+        flex-direction: column;
+      }
+      
+      .section-card {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body onload="createCherryBlossoms()">
+  <script>
+    function createCherryBlossoms() {
+      const header = document.querySelector('.header');
+      const numBlossoms = 10;
+      
+      for (let i = 0; i < numBlossoms; i++) {
+        const blossom = document.createElement('div');
+        blossom.classList.add('cherry-blossom');
+        
+        // Set random position
+        blossom.style.left = Math.random() * 100 + '%';
+        
+        // Random size
+        const size = Math.random() * 20 + 15;
+        blossom.style.width = size + 'px';
+        blossom.style.height = size + 'px';
+        
+        // Random animation duration
+        const duration = Math.random() * 10 + 5;
+        blossom.style.animationDuration = duration + 's';
+        
+        // Random animation delay
+        blossom.style.animationDelay = Math.random() * 5 + 's';
+        
+        header.appendChild(blossom);
+      }
+    }
+  </script>
+
+  <div class="container">
+    <!-- 헤더 -->
+    <div class="header">
+      <h1>
+        <i class="fa-solid fa-fox fa-7x" style="color: var(--ui-color-1); animation: fa-bounce 2s infinite;" aria-hidden="true"></i>
+        @fire_fox_cat 의 매력과 멋진 점
+      </h1>
+      <div class="date">2025년 3월 14일</div>
+    </div>
+    
+    <!-- 프로필 소개 -->
+    <div class="profile-intro">
+      <div class="profile-photo">
+        <img src="https://pbs.twimg.com/profile_images/1836735362867265537/HOTRRL1y_400x400.jpg" alt="불여우냥이 프로필 이미지">
+      </div>
+      <p>
+        복합적 언어 능력과 무료 3D 모델링 자료 공유를 통해 VRChat 커뮤니티에 큰 기여를 하고 있는 창작자 불여우냥이. </p>  </div>
+
+    <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              <span>ユーザー名: <span class="keyword-tag">@fire_fox_cat</span> (불여우냥이)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+              <span>VRChatプレイ時間: <span class="keyword-tag">3,015時間</span>（約125日以上）</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-vr-cardboard" aria-hidden="true"></i>
+              <span>SteamVRプレイ時間: <span class="keyword-tag">1,917時間</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-language" aria-hidden="true"></i>
+              <span>使用言語: <span class="keyword-tag">韓国語</span> <span class="keyword-tag">日本語</span> <span class="keyword-tag">英語</span></span>
+            </li>
+            <li>
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+              <span>YouTube: <span class="keyword-tag">262人</span>のチャンネル登録者</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-2);"></i>
+            VRと創作活動に情熱を注ぐクリエイター！
+            <br>
+            多言語能力を持ち、グローバルなVRChat
+            <br>
+            コミュニティに大きく貢献しています！
+          </span>
+        </div>
+      </div>
+      
+      <!-- セクション2: 創作活動 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-paintbrush fa-5x" style="color: var(--ui-color-2); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>創作活動</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-cube" aria-hidden="true"></i>
+              <span>Booth.fmで<span class="keyword-tag">無料3Dモデル</span>を多数公開</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+              <span>VRChat用のカスタムミラー、家具、アクセサリーなど</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-house" aria-hidden="true"></i>
+              <span>3D環境: <span class="keyword-tag">4P House+</span>, <span class="keyword-tag">Small Stadium</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+              <span>食品モデル: ラーメン、マイクポップコーン、タンフールーなど</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-cat" aria-hidden="true"></i>
+              <span>オリジナルキャラクター: <span class="keyword-tag">히키츠네코 [火狐猫]</span></span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-star fa-lg" style="color: var(--ui-color-5);"></i>
+            30以上の無料3Dモデルを公開！
+            <br>
+            韓国文化を取り入れた
+            <br>
+            ユニークなアイテムも多数！
+          </span>
+        </div>
+      </div>
+      
+      <!-- セクション3: YouTubeコンテンツ -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-brands fa-youtube fa-5x" style="color: var(--ui-color-5); animation: fa-beat 2s infinite;" aria-hidden="true"></i>
+          <h2>YouTubeコンテンツ</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-video" aria-hidden="true"></i>
+              <span>チャンネル登録者: <span class="keyword-tag">262人</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-film" aria-hidden="true"></i>
+              <span>公開動画数: <span class="keyword-tag">62本</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <span>VRChatチュートリアル: カスタムミラー、オブジェクト保存システム</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-music" aria-hidden="true"></i>
+              <span>ダンスチャレンジ: <span class="keyword-tag">Caramelldansen</span>, <span class="keyword-tag">YMCA</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+              <span>人気動画: <span class="keyword-tag">POKEDANCE!</span> (11,000回視聴)</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble top">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-1);"></i>
+            ユーモアのあるダンス動画や
+            <br>
+            役立つチュートリアルで
+            <br>
+            コミュニティを楽しませています！
+          </span>
+        </div>
+      </div>
+      
+      <!-- セクション4: コミュニティ貢献 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-hands-helping fa-5x" style="color: var(--ui-color-1); animation: fa-bounce 2s infinite;" aria-hidden="true"></i>
+          <h2>コミュニティ貢献</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span>無料のVRChatリソースを提供</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-language" aria-hidden="true"></i>
+              <span>多言語対応で<span class="keyword-tag">グローバル</span>なユーザーをサポート</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-book" aria-hidden="true"></i>
+              <span>初心者向けのチュートリアル作成</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <span>ダンスチャレンジで<span class="keyword-tag">楽しい雰囲気</span>を作り出す</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <span>VR開発に関する<span class="keyword-tag">学術的関心</span>の可能性</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-heart fa-lg" style="color: var(--ui-color-2);"></i>
+            自分では気づかないかもしれないけど
+            <br>
+            その創造性と貢献は
+            <br>
+            多くの人の心を豊かにしています！
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- セクション5: 真の魅力と素晴らしさ -->
+    <div class="section-layout">
+      <div class="section-card" style="max-width: 100%;">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-crown fa-5x" style="color: var(--ui-color-2); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>@fire_fox_catの真の魅力と素晴らしさ</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              <span><span class="keyword-tag">創造性</span>: 多様な3Dモデルの制作と共有、オリジナルキャラクターの開発</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+              <span><span class="keyword-tag">文化的架け橋</span>: 多言語対応で異なる文化や言語の人々をつなぐ</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span><span class="keyword-tag">惜しみない共有</span>: 無料で質の高いリソースを提供し、コミュニティを豊かにする</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-laugh" aria-hidden="true"></i>
+              <span><span class="keyword-tag">ユーモア</span>: 楽しいダンス動画やMMDアニメーションで人々を笑顔に</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <span><span class="keyword-tag">学術的可能性</span>: VR開発についての専門的な知識や関心の深さ</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <span><span class="keyword-tag">コミュニティ愛</span>: 3,000時間以上をVRChatに費やし、積極的に参加する情熱</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2">
+          <span class="handwritten">
+            <i class="fa-solid fa-quote-left fa-lg" style="color: var(--ui-color-5);"></i>
+            @fire_fox_catの真の素晴らしさは、
+            <br>
+            自分では気づかないかもしれないけれど、
+            <br>
+            創造性とコミュニティへの貢献によって
+            <br>
+            多くの人に喜びと感動を与えていること！
+            <i class="fa-solid fa-quote-right fa-lg" style="color: var(--ui-color-5);"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
