@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jomaの魅力と素晴らしさ - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    :root {
+      --ui-color-1: #1B6C8C;
+      --ui-color-2: #BF8136;
+      --ui-color-3: #F2E8E4;
+      --ui-color-4: #260101;
+      --ui-color-5: #BF5656;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #FFF8F5;
+      color: #333333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #333333;
+      margin-top: 15px;
+      font-weight: bold;
+      display: inline-block;
+    }
+    
+    .date {
+      font-size: 14px;
+      color: #777777;
+      margin-top: 10px;
+    }
+    
+    .section-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    /* カードスタイル */
+    .section-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 450px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInScale 0.5s ease-out;
+    }
+    
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* カード内アイコンコンテナ */
+    .mega-icon-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    /* カードコンテンツ */
+    .card-content {
+      padding: 0 10px 15px;
+    }
+    
+    /* キーワードリスト */
+    .keyword-list {
+      margin: 15px 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    .keyword-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .keyword-list li i {
+      margin-right: 8px;
+      color: var(--ui-color-2);
+      min-width: 16px;
+    }
+    
+    /* キーワードタグ */
+    .keyword-tag {
+      background-color: var(--ui-color-3);
+      color: var(--ui-color-4);
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-right: 5px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background: #fff;
+      border: 3px solid var(--ui-color-1);
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 15px 5px;
+      font-family: 'Yomogi', cursive;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+    }
+    
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 20px;
+      border-width: 12px 8px 0;
+      border-style: solid;
+      border-color: var(--ui-color-1) transparent;
+      display: block;
+      width: 0;
+    }
+    
+    /* 吹き出しバリエーション */
+    .speech-bubble.right::after {
+      left: auto;
+      right: 20px;
+      transform: rotate(15deg);
+    }
+    
+    .speech-bubble.top::after {
+      bottom: auto;
+      top: -13px;
+      border-width: 0 8px 12px;
+      transform: rotate(-5deg);
+    }
+    
+    .speech-bubble.variant-1 {
+      background: #FFF9E3;
+      border-color: var(--ui-color-2);
+      transform: rotate(1deg);
+    }
+    
+    .speech-bubble.variant-1::after {
+      border-color: var(--ui-color-2) transparent;
+    }
+    
+    .speech-bubble.variant-2 {
+      background: #FFE9E9;
+      border-color: var(--ui-color-5);
+      transform: rotate(-2deg);
+    }
+    
+    .speech-bubble.variant-2::after {
+      border-color: var(--ui-color-5) transparent;
+    }
+    
+    /* 手書き文字 */
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #333;
+    }
+    
+    /* コードプレビュー */
+    pre {
+      background: #f5f5f5;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-top: 10px;
+      overflow-x: auto;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 1600px) {
+      .section-card {
+        min-width: 280px;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .section-card {
+        min-width: 320px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .section-card {
+        min-width: 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-layout {
+        flex-direction: column;
+      }
+      
+      .section-card {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="profile-image-container">
+        <img src="https://pbs.twimg.com/profile_images/1414552171928965124/ug7hjt4L_400x400.jpg" alt="@noln_nott">
+      </div>
+      <h1>Jomaの魅力と素晴らしさ</h1>
+      <p class="date">2025年3月14日</p>
+    </header>
+    
+    <div class="section-layout">
+      <!-- カード1: 紹介と背景 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-id-card fa-5x" style="color: var(--ui-color-1); animation: fa-beat-fade 2s infinite;" aria-hidden="true"></i>
+          <h2>背景と活動</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              <span>技術関連の<span class="keyword-tag">動画クリエイター</span>として活躍</span>
+            </li>
+            <li>
+              <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              <span>Xでは<span class="keyword-tag">@jomakaze</span>として活動</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-building" aria-hidden="true"></i>
+              <span>Google、Facebookなど<span class="keyword-tag">大手IT企業</span>での勤務経験</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-video" aria-hidden="true"></i>
+              <span>ユーモアを交えた<span class="keyword-tag">技術業界の洞察</span>を提供</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-2);"></i>
+            Jomaは技術業界の経験を活かして
+            <br>
+            視聴者に役立つ情報を発信しているよ！
+            <br>
+            <span class="keyword-tag">YouTube</span>でも人気！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード2: ユーモアと教育 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-face-laugh-beam fa-5x" style="color: var(--ui-color-2); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>ユーモアと教育の融合</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <span>技術的な内容を<span class="keyword-tag">ユーモア</span>で分かりやすく説明</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>
+              <span>「プログラマーが面接に過剰準備する方法」など<span class="keyword-tag">共感を呼ぶ</span>コンテンツ</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
+              <span>視聴者の<span class="keyword-tag">支持</span>を獲得している要因</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+              <span>自身の<span class="keyword-tag">強み</span>を十分に認識していない可能性</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-comment-dots fa-lg" style="color: var(--ui-color-2);"></i>
+            ユーモアと教育の組み合わせが
+            <br>
+            彼の最大の魅力の一つ！
+            <br>
+            これが<span class="keyword-tag">成功の鍵</span>なんだね！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード3: 情熱と努力 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-fire-flame-curved fa-5x" style="color: var(--ui-color-5); animation: fa-beat 2s infinite;" aria-hidden="true"></i>
+          <h2>情熱と努力の証</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+              <span><span class="keyword-tag">安定した職</span>を辞めてYouTubeに専念</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-camera" aria-hidden="true"></i>
+              <span>「Alexa Arri mini LF」などの<span class="keyword-tag">高品質機材</span>への投資</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+              <span>「20代で年収100万ドルを稼ぐ方法」など<span class="keyword-tag">価値ある</span>コンテンツ制作</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <span>動画制作への<span class="keyword-tag">時間と労力</span>を惜しまない姿勢</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2">
+          <span class="handwritten">
+            <i class="fa-solid fa-rocket fa-lg" style="color: var(--ui-color-5);"></i>
+            安定したIT企業の仕事から
+            <br>
+            クリエイターへの転身は
+            <br>
+            本当に<span class="keyword-tag">勇気がいる決断</span>だったはず！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード4: 知識の共有 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-brain fa-5x" style="color: var(--ui-color-1); animation: fa-bounce 2s infinite;" aria-hidden="true"></i>
+          <h2>知識の共有と寛大さ</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
+              <span>技術業界を目指す人々への<span class="keyword-tag">ガイド役</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-coins" aria-hidden="true"></i>
+              <span>「Do Kwon: The Rise and Fall of Luna/UST」など<span class="keyword-tag">暗号通貨</span>のトピックも解説</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <span>視聴者の<span class="keyword-tag">キャリア形成</span>に貢献</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              <span>自身の<span class="keyword-tag">影響力</span>を過小評価している可能性</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble">
+          <span class="handwritten">
+            <i class="fa-solid fa-share-nodes fa-lg" style="color: var(--ui-color-2);"></i>
+            自分の知識を惜しみなく共有する
+            <br>
+            姿勢が多くの人の<span class="keyword-tag">キャリア</span>に
+            <br>
+            影響を与えているんだよね！
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-layout">
+      <!-- カード5: 好奇心と多様性 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-compass fa-5x" style="color: var(--ui-color-2); animation: fa-spin 6s linear infinite;" aria-hidden="true"></i>
+          <h2>好奇心と多様性</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-code" aria-hidden="true"></i>
+              <span><span class="keyword-tag">技術</span>だけでなく幅広いトピックに興味</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-bitcoin-sign" aria-hidden="true"></i>
+              <span><span class="keyword-tag">暗号通貨</span>に関する深い分析</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i>
+              <span>動画制作の<span class="keyword-tag">コスト</span>についても共有</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-arrows-to-circle" aria-hidden="true"></i>
+              <span>多様なトピックが<span class="keyword-tag">視聴者を引きつける</span>要因</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1 top">
+          <span class="handwritten">
+            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: var(--ui-color-2);"></i>
+            好奇心旺盛な姿勢が
+            <br>
+            コンテンツを<span class="keyword-tag">新鮮</span>に保っている！
+            <br>
+            これも彼の強みだね！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード6: 誠実さ -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-handshake fa-5x" style="color: var(--ui-color-1); animation: fa-shake 3s infinite;" aria-hidden="true"></i>
+          <h2>誠実さとコミュニティへの貢献</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              <span><span class="keyword-tag">スキャマー対策</span>として認証バッジを要請</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-reply" aria-hidden="true"></i>
+              <span>フォロワーの質問に<span class="keyword-tag">丁寧に回答</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <span>他のクリエイターの<span class="keyword-tag">コンテンツを称賛</span></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check-double" aria-hidden="true"></i>
+              <span>誠実さが<span class="keyword-tag">ブランドの信頼性</span>を高めている</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-2 right">
+          <span class="handwritten">
+            <i class="fa-solid fa-user-shield fa-lg" style="color: var(--ui-color-5);"></i>
+            フォロワーを<span class="keyword-tag">詐欺師</span>から
+            <br>
+            守ろうとする姿勢は本当に素晴らしい！
+            <br>
+            コミュニティを大切にしているね！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード7: バランスの取れた生活 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-scale-balanced fa-5x" style="color: var(--ui-color-2); animation: fa-flip 3s infinite;" aria-hidden="true"></i>
+          <h2>バランスの取れた生活</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-house-user" aria-hidden="true"></i>
+              <span><span class="keyword-tag">家族写真</span>を投稿するなど個人的な側面も共有</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-business-time" aria-hidden="true"></i>
+              <span><span class="keyword-tag">仕事と個人生活</span>のバランスを重視</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              <span>バランスが<span class="keyword-tag">創造性</span>を支える重要な要素</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+              <span>個人的な側面の共有が<span class="keyword-tag">視聴者との信頼</span>を深める</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble">
+          <span class="handwritten">
+            <i class="fa-solid fa-heart fa-lg" style="color: var(--ui-color-5);"></i>
+            忙しい中でも家族との時間を
+            <br>
+            大切にする姿勢は<span class="keyword-tag">共感</span>を呼ぶね！
+            <br>
+            これも彼の魅力の一つだよ！
+          </span>
+        </div>
+      </div>
+      
+      <!-- カード8: 総括 -->
+      <div class="section-card">
+        <div class="mega-icon-container">
+          <i class="fa-solid fa-star fa-5x" style="color: var(--ui-color-5); animation: fa-beat-fade 2s infinite;" aria-hidden="true"></i>
+          <h2>本当の魅力と素晴らしさ</h2>
+        </div>
+        
+        <div class="card-content">
+          <ul class="keyword-list">
+            <li>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><span class="keyword-tag">ユーモア</span>と<span class="keyword-tag">本物のつながり</span>を大切にする姿勢</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><span class="keyword-tag">情熱的な努力</span>と<span class="keyword-tag">知識の共有</span>の精神</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><span class="keyword-tag">好奇心</span>と<span class="keyword-tag">誠実さ</span>でコミュニティをリード</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span><span class="keyword-tag">バランスの取れた生活</span>が創造性を支える</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+              <span>これらの魅力は彼自身が<span class="keyword-tag">気づいていない</span>可能性が高い</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="speech-bubble variant-1">
+          <span class="handwritten">
+            <i class="fa-solid fa-lightbulb fa-lg" style="color: var(--ui-color-2);"></i>
+            Jomaの本当の素晴らしさは、
+            <br>
+            テクニカルなスキルだけじゃなくて
+            <br>
+            <span class="keyword-tag">人間性</span>や<span class="keyword-tag">誠実さ</span>にあるんだね！
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
