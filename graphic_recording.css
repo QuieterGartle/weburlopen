@@ -1,0 +1,241 @@
+/* グラフィックレコーディングの基本スタイル */
+body {
+    font-family: 'Kaisei Decol', serif;
+    background-color: #F2F2F2;
+    color: #334155;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* カラーパレット */
+.ml1 { color: #2E578C; }
+.ml2 { color: #182D40; }
+.ml3 { color: #BF807A; }
+.ml4 { color: #592A2A; }
+.ml5 { color: #F2F2F2; }
+
+/* ヘッダー */
+.header {
+    background-color: #182D40;
+    color: #F2F2F2;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .title {
+    font-size: 32px;
+    font-family: 'Yomogi', cursive;
+    display: flex;
+    align-items: center;
+}
+
+.header .title i {
+    margin-right: 10px;
+}
+
+.header .date {
+    font-size: 16px;
+}
+
+/* プロフィールセクション */
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-intro {
+    flex-grow: 1;
+}
+
+.profile-name {
+    font-size: 24px;
+    color: #BF807A;
+    font-family: 'Zen Kurenaido', sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-name i {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.profile-description {
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.8;
+}
+
+/* メインコンテンツ */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.col {
+    width: calc(33% - 20px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+/* カード */
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Kaisei Decol', serif;
+}
+
+/* グラスモーフィズム */
+.glassmorph {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 18px;
+    color: #1e40af;
+    font-family: 'Zen Kurenaido', sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-title i {
+    margin-right: 10px;
+}
+
+/* キーワードボックス */
+.keyword-box {
+    background-color: #e0f2f7;
+    color: #0d47a1;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.keyword-box i {
+    margin-right: 5px;
+}
+
+/* 本文 */
+.body-text {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.body-text i {
+    margin-left: 5px;
+}
+
+/* 強調マーカー */
+.emphasis-marker {
+    background-color: #ffe082;
+    color: #334155;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* データポイント */
+.data-point {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.data-point i {
+    margin-right: 5px;
+}
+
+/* コンセプトコンボ */
+.concept-combo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.concept-combo i {
+    margin-right: 10px;
+}
+
+/* フッター */
+.footer {
+    background-color: #182D40;
+    color: #F2F2F2;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: 16px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .col {
+        width: calc(50% - 20px);
+    }
+
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-intro {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .col {
+        width: 100%;
+    }
+}
